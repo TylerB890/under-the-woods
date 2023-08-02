@@ -6,6 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
 
+    
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
@@ -52,8 +53,8 @@ jobs:
           StrictHostKeyChecking no
         END
       env:
-        SH_HOST: ${{ secrets.HOST }}
-        SH_USER: ${{ secrets.USERNAME }}
+        SSH_HOST: ${{ secrets.HOST }}
+        SSH_USER: ${{ secrets.USERNAME }}
         SSH_KEY: ${{ secrets.SSH_KEY }} 
     - name: List home directory
       run: ssh ec2 '
