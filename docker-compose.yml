@@ -20,12 +20,12 @@ services:
       - laravel
 
   mysql:
-    image: mysql:8.0.34-debian
+    image: mariadb:11.1.1-rc-jammy
     container_name: mysql
     restart: unless-stopped
     tty: true
     ports:
-      - "3306:3306"
+      - "3306:3307"
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
