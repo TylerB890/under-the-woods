@@ -39,18 +39,27 @@ jobs:
     runs-on: ubuntu-latest
     needs: [laravel-tests]
     steps:
-    - name: executing remote ssh commands using ssh-key
-      env:
-        PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-        HOSTNAME: ${{secrets.HOST}}
-        USER_NAME: ${{secrets.USERNAME}}
+    - name: Configure SSH
       run: |
-        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+        echo "$SSH_KEY" > ~/.ssh/github-actions-key
+        chmod 600 ~/.ssh/github-actions-key
+        cat >>~/.ssh/config <<END
+        Host ec2
+          HostName $SSH_HOST
+          User $SSH_USER
+          IdentityFile ~/.ssh/github-actions-key
+          StrictHostKeyChecking no
+        END
+      env:
+        SH_HOST: ${{ secrets.HOST }}
+        SH_USER: ${{ secrets.USERNAME }}
+        SSH_KEY: ${{ secrets.SSH_KEY }} 
+    - name: List home directory
+      run: ssh ec2 '
           cd ..
           cd laravel/under-the-woods
           docker compose -f docker-compose.prod.yml down
           git reset --hard
           git pull
           docker compose -f docker-compose.prod.yml up -d
-          '
+        '
