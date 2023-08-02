@@ -44,9 +44,11 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          cd /var/www/html
+          cd ..
+          cd laravel/under-the-woods
           docker compose -f docker-compose.prod.yml down
           git reset --hard
           git pull
