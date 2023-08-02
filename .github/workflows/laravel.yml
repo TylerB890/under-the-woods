@@ -40,16 +40,17 @@ jobs:
     needs: [laravel-tests]
     steps:
     - name: executing remote ssh commands using ssh-key
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
-        script: |
+      env:
+        PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+        HOSTNAME: ${{secrets.HOST}}
+        USER_NAME: ${secrets.USERNAME}
+      run: |
+        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           cd ..
           cd laravel/under-the-woods
           docker compose -f docker-compose.prod.yml down
           git reset --hard
           git pull
           docker compose -f docker-compose.prod.yml up -d
-        
+          '
