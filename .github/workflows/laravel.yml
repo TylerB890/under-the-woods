@@ -37,7 +37,7 @@ jobs:
   
   docker-build:
     runs-on: ubuntu-latest
-    needs: ["laravel-tests"]
+    needs: [laravel-tests]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
