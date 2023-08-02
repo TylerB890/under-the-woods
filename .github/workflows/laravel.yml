@@ -44,7 +44,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_KEY_2 }}
           script: |
             cd ..
             cd laravel/under-the-woods
