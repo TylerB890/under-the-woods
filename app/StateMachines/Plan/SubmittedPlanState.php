@@ -2,10 +2,10 @@
 
 namespace App\StateMachines\Plan;
 
-use App\StateMachines\Plan\Contract\PlanStateContract;
+use App\StateMachines\BaseStates\BasePlanState;
 use App\Models\Plan;
 
-class SubmittedPlanState implements PlanStateContract
+class SubmittedPlanState implements BasePlanState
 {
     function accept() {
         $this->plan->update(['status' => Plan::State::Finalized->value]);
@@ -26,6 +26,4 @@ class SubmittedPlanState implements PlanStateContract
         $this->plan->update(['status' => Plan::State::Rejected->value]);
         # Send email to Trip Planner
     }
-
-    function submit() {throw new Exception();}
 }

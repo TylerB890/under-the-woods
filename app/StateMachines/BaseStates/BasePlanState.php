@@ -1,12 +1,14 @@
 <?php
 
-namespace App\StateMachines\Plan;
+namespace App\StateMachines\BaseStates;
 
-use App\StateMachines\BaseStates\BasePlanState;
 use App\Models\Plan;
+use App\StateMachines\Contracts\PlanStateContract;
 
-class FinalizedPlanState implements BasePlanState
+class BaseInvoiceState implements PlanStateContract
 {
+    function __construct(public Plan $plan) {}
+
     function accept() {throw new Exception();}
     function cancel() {throw new Exception();}
     function recall() {throw new Exception();}

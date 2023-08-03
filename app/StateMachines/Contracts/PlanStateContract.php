@@ -1,6 +1,6 @@
 <?php
 
-namespace App\StateMachines\Contract\Plan;
+namespace App\StateMachines\Contracts\Plan;
 
 interface PlanStateContract {
     function accept();
