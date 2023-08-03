@@ -1,7 +1,7 @@
 <?php
 
-use App\Livewire\Counter;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Counter;
 use Illuminate\Support\Facades\Route;
 
 /*
