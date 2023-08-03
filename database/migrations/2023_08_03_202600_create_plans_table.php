@@ -60,7 +60,6 @@ return new class extends Migration
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('day_id')->constrained()->onDelete('cascade');
-            $table->timestamp('start_time');
             $table->unsignedBigInteger('start_location_id');
             $table->unsignedBigInteger('end_location_id');
             $table->timestamp('start_time');
@@ -73,11 +72,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plans');
-        Schema::dropIfExists('locations');
-        Schema::dropIfExists('days');
-        Schema::dropIfExists('meals');
-        Schema::dropIfExists('activities');
         Schema::dropIfExists('routes');
+        Schema::dropIfExists('activities');
+        Schema::dropIfExists('meals');
+        Schema::dropIfExists('days');
+        Schema::dropIfExists('locations');
+        Schema::dropIfExists('plans');
     }
 };
