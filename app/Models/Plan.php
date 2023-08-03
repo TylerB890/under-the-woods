@@ -18,8 +18,6 @@ enum State: string
 
 class Plan extends Model
 {
-    use HasFactory;
-
     protected array $attributes = [
         'status' => State::Draft,
     ];
@@ -35,4 +33,36 @@ class Plan extends Model
             default => throw new InvalidArgumentException ('Invalid Status')
         };
     }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'user_id',
+        'status',
+        'origin',
+        'destination',
+        'start_date',
+        'end_date',
+        'submitted_at',
+        'rejected_at',
+        'cancelled_at',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'status' => State::class,
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+        'submitted_at' => 'datetime',
+        'rejected_at' => 'datetime',
+        'cancelled_at' => 'datetime',
+    ];
+
 }
