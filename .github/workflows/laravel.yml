@@ -39,7 +39,7 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/pest --coverage --min=80
+      run: vendor/bin/pest --coverage --min=85
     - name: Check Type Coverage
       env:
         DB_CONNECTION: sqlite
