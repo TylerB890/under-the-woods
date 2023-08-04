@@ -3,31 +3,32 @@
 namespace App\StateMachines\Plan;
 
 use App\Models\Plan;
+use App\Enums\PlanState;
 use App\StateMachines\BaseStates\BasePlanState;
 
-class SubmittedPlanState implements BasePlanState
+class SubmittedPlanState extends BasePlanState
 {
     public function accept(): void
     {
-        $this->plan->update(['status' => Plan::State::Finalized->value]);
+        $this->plan->update(['status' => PlanState::Finalized->value]);
         // Send email to Trip Planner
     }
 
     public function cancel(): void
     {
-        $this->plan->update(['status' => Plan::State::Cancelled->value]);
+        $this->plan->update(['status' => PlanState::Cancelled->value]);
         // Send email to Trip Planner
     }
 
     public function recall(): void
     {
-        $this->plan->update(['status' => Plan::State::Draft->value]);
+        $this->plan->update(['status' => PlanState::Draft->value]);
         // Send email to End User
     }
 
     public function reject(): void
     {
-        $this->plan->update(['status' => Plan::State::Rejected->value]);
+        $this->plan->update(['status' => PlanState::Rejected->value]);
         // Send email to Trip Planner
     }
 }

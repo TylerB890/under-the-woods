@@ -3,13 +3,14 @@
 namespace App\StateMachines\Plan;
 
 use App\Models\Plan;
+use App\Enums\PlanState;
 use App\StateMachines\BaseStates\BasePlanState;
 
-class DraftPlanState implements BasePlanState
+class DraftPlanState extends BasePlanState
 {
     public function submit(): void
     {
-        $this->plan->update(['status' => Plan::State::Submitted->value]);
+        $this->plan->update(['status' => PlanState::Submitted->value]);
         // Send email to End User
     }
 }

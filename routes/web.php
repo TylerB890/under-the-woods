@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Plan\SubmitPlanController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Counter;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,8 @@ Route::get('/', function () {
 });
 
 Route::get('/counter', Counter::class);
+
+Route::put('/submit/{plan}', SubmitPlanController::class)->name('submit');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

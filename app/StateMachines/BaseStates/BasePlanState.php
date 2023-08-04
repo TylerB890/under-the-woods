@@ -5,7 +5,9 @@ namespace App\StateMachines\BaseStates;
 use App\Models\Plan;
 use App\StateMachines\Contracts\PlanStateContract;
 
-class BaseInvoiceState implements PlanStateContract
+use Exception;
+
+class BasePlanState implements PlanStateContract
 {
     public function __construct(public Plan $plan)
     {

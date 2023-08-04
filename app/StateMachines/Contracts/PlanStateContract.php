@@ -1,6 +1,6 @@
 <?php
 
-namespace App\StateMachines\Contracts\Plan;
+namespace App\StateMachines\Contracts;
 
 interface PlanStateContract
 {

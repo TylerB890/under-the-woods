@@ -3,8 +3,9 @@
 namespace App\StateMachines\Plan;
 
 use App\StateMachines\BaseStates\BasePlanState;
+use Exception;
 
-class CancelledPlanState implements BasePlanState
+class CancelledPlanState extends BasePlanState
 {
     public function recall(): void
     {

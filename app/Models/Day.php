@@ -29,6 +29,6 @@ class Day extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'date' => 'datetime',
+        'date' => 'datetime:Y-m-d',
     ];
 }

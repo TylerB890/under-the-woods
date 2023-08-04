@@ -4,6 +4,11 @@ namespace App\Models;
 
 use App\Enums\PlanState;
 use App\StateMachines\Contracts\PlanStateContract;
+use App\StateMachines\Plan\CancelledPlanState;
+use App\StateMachines\Plan\DraftPlanState;
+use App\StateMachines\Plan\FinalizedPlanState;
+use App\StateMachines\Plan\RejectedPlanState;
+use App\StateMachines\Plan\SubmittedPlanState;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,7 +22,7 @@ class Plan extends Model
 
     public function state(): PlanStateContract
     {
-        return match (State::from($this->status)) {
+        return match ($this->status) {
             PlanState::Draft => new DraftPlanState($this),
             PlanState::Submitted => new SubmittedPlanState($this),
             PlanState::Rejected => new RejectedPlanState($this),
@@ -51,8 +56,8 @@ class Plan extends Model
      */
     protected $casts = [
         'status' => PlanState::class,
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
+        'start_date' => 'datetime:Y-m-d',
+        'end_date' => 'datetime:Y-m-d',
         'submitted_at' => 'datetime',
         'rejected_at' => 'datetime',
         'cancelled_at' => 'datetime',
