@@ -20,20 +20,6 @@ class Activity extends Model
      */
     public $timestamps = false;
 
-    protected function startTime(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => new Carbon($value),
-        );
-    }
-
-    protected function endTime(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => new Carbon($value),
-        );
-    }
-
     /**
      * The attributes that are mass assignable.
      *
@@ -44,5 +30,15 @@ class Activity extends Model
         'location_id',
         'start_time',
         'end_time',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'start_time' => 'timestamp',
+        'end_time' => 'timestamp',
     ];
 }
