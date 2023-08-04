@@ -23,20 +23,6 @@ class Dining extends Model
      */
     public $timestamps = false;
 
-    protected function startTime(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => new Carbon($value),
-        );
-    }
-
-    protected function endTime(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => new Carbon($value),
-        );
-    }
-
     /**
      * The attributes that are mass assignable.
      *
@@ -57,5 +43,7 @@ class Dining extends Model
      */
     protected $casts = [
         'meal' => Meal::class,
+        'start_time' => 'timestamp',
+        'end_time' => 'timestamp',
     ];
 }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Plan\RecallPlanController;
 use App\Http\Controllers\Plan\RejectPlanController;
 use App\Http\Controllers\Plan\SubmitPlanController;
 use App\Http\Controllers\ProfileController;
-use App\Livewire\Counter;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/counter', Counter::class);
 
 Route::put('/submit/{plan}', SubmitPlanController::class)->name('submit');
 Route::put('/cancel/{plan}', CancelPlanController::class)->name('cancel');
