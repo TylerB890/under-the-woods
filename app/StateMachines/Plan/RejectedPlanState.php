@@ -2,7 +2,6 @@
 
 namespace App\StateMachines\Plan;
 
-use App\Models\Plan;
 use App\Enums\PlanState;
 use App\StateMachines\BaseStates\BasePlanState;
 

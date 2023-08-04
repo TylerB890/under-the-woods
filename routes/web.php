@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Plan\AcceptPlanController;
+use App\Http\Controllers\Plan\CancelPlanController;
+use App\Http\Controllers\Plan\RecallPlanController;
+use App\Http\Controllers\Plan\RejectPlanController;
 use App\Http\Controllers\Plan\SubmitPlanController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Counter;
@@ -23,6 +27,10 @@ Route::get('/', function () {
 Route::get('/counter', Counter::class);
 
 Route::put('/submit/{plan}', SubmitPlanController::class)->name('submit');
+Route::put('/cancel/{plan}', CancelPlanController::class)->name('cancel');
+Route::put('/recall/{plan}', RecallPlanController::class)->name('recall');
+Route::put('/reject/{plan}', RejectPlanController::class)->name('reject');
+Route::put('/accept/{plan}', AcceptPlanController::class)->name('accept');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

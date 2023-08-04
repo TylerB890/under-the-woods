@@ -4,7 +4,6 @@ namespace App\StateMachines\BaseStates;
 
 use App\Models\Plan;
 use App\StateMachines\Contracts\PlanStateContract;
-
 use Exception;
 
 class BasePlanState implements PlanStateContract
