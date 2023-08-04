@@ -10,7 +10,7 @@ class Activity extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'activities';
@@ -18,7 +18,7 @@ class Activity extends Model
     /**
      * Indicates if the model should be timestamped
      */
-    protected $timestamps = false;
+    public $timestamps = false;
 
     protected function startTime(): Attribute
     {
@@ -26,6 +26,7 @@ class Activity extends Model
             get: fn (string $value) => new Carbon($value),
         );
     }
+
     protected function endTime(): Attribute
     {
         return Attribute::make(

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('destination');
             $table->date('start_date');
             $table->date('end_date');
-            $table->timestamp('submitted_at');
-            $table->timestamp('rejected_at');
-            $table->timestamp('cancelled_at');
+            $table->timestamp('submitted_at')->nullable();
+            $table->timestamp('rejected_at')->nullable();
+            $table->timestamp('cancelled_at')->nullable();
         });
 
         Schema::create('locations', function (Blueprint $table) {
@@ -40,7 +40,7 @@ return new class extends Migration
             $table->unsignedBigInteger('end_location_id');
         });
 
-        Schema::create('meals', function (Blueprint $table) {
+        Schema::create('dinings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('day_id')->constrained();
             $table->unsignedBigInteger('location_id');
@@ -74,7 +74,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('routes');
         Schema::dropIfExists('activities');
-        Schema::dropIfExists('meals');
+        Schema::dropIfExists('dinings');
         Schema::dropIfExists('days');
         Schema::dropIfExists('locations');
         Schema::dropIfExists('plans');

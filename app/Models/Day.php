@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Day extends Model
@@ -10,7 +9,7 @@ class Day extends Model
     /**
      * Indicates if the model should be timestamped
      */
-    protected $timestamps = false;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -32,5 +31,4 @@ class Day extends Model
     protected $casts = [
         'date' => 'datetime',
     ];
-
 }

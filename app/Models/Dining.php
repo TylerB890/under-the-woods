@@ -16,12 +16,12 @@ enum Meal: string
     case Snack = 'Snack';
 }
 
-class Meal extends Model
+class Dining extends Model
 {
     /**
      * Indicates if the model should be timestamped
      */
-    protected $timestamps = false;
+    public $timestamps = false;
 
     protected function startTime(): Attribute
     {
@@ -29,6 +29,7 @@ class Meal extends Model
             get: fn (string $value) => new Carbon($value),
         );
     }
+
     protected function endTime(): Attribute
     {
         return Attribute::make(
@@ -57,5 +58,4 @@ class Meal extends Model
     protected $casts = [
         'meal' => Meal::class,
     ];
-
 }

@@ -8,9 +8,9 @@ use Illuminate\View\View;
 
 class FinalizePlanController extends Controller
 {
-    public function __invoke(Request $request, Plan $plan): Void
+    public function __invoke(Request $request, Plan $plan): void
     {
         $plan->state()->finalize();
-        # return view('plan.show', ['plan' => $plan]);
+        // return view('plan.show', ['plan' => $plan]);
     }
 }

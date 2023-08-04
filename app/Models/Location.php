@@ -9,7 +9,7 @@ class Location extends Model
     /**
      * Indicates if the model should be timestamped
      */
-    protected $timestamps = false;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.

@@ -2,13 +2,14 @@
 
 namespace App\StateMachines\Plan;
 
-use App\StateMachines\BaseStates\BasePlanState;
 use App\Models\Plan;
+use App\StateMachines\BaseStates\BasePlanState;
 
 class DraftPlanState implements BasePlanState
 {
-    function submit() {
+    public function submit(): void
+    {
         $this->plan->update(['status' => Plan::State::Submitted->value]);
-        # Send email to End User
+        // Send email to End User
     }
 }

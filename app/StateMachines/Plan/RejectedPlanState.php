@@ -2,23 +2,26 @@
 
 namespace App\StateMachines\Plan;
 
-use App\StateMachines\BaseStates\BasePlanState;
 use App\Models\Plan;
+use App\StateMachines\BaseStates\BasePlanState;
 
 class RejectedPlanState implements BasePlanState
 {
-    function accept() {
+    public function accept(): void
+    {
         $this->plan->update(['status' => Plan::State::Finalized->value]);
-        # Send email to Trip Planner
+        // Send email to Trip Planner
     }
 
-    function cancel() {
+    public function cancel(): void
+    {
         $this->plan->update(['status' => Plan::State::Cancelled->value]);
-        # Send email to Trip Planner
+        // Send email to Trip Planner
     }
 
-    function submit() {
+    public function submit(): void
+    {
         $this->plan->update(['status' => Plan::State::Submitted->value]);
-        # Send email to End User
+        // Send email to End User
     }
 }
