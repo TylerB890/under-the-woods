@@ -2,10 +2,11 @@
 
 use App\Enums\PlanState;
 use App\Models\Plan;
+use App\Models\User;
 use Exception;
 
 it('handles state as expected', function (string $method, PlanState $state, PlanState $expected) {
-    $plan = Plan::factory()->create(['status' => $state]);
+    $plan = Plan::factory()->create(['user_id' => User::factory()->create()->id, 'status' => $state]);
     $response = $this->put(route($method, $plan));
 
     $this->withoutExceptionHandling(); // Otherwise it gets handled and put into the console.
@@ -41,7 +42,7 @@ it('handles state as expected', function (string $method, PlanState $state, Plan
 ]);
 
 it('throws an exception', function (string $method, PlanState $state) {
-    $plan = Plan::factory()->make(['status' => $state]);
+    $plan = Plan::factory()->make(['user_id' => User::factory()->create()->id, 'status' => $state]);
 
     $this->withoutExceptionHandling(); // Otherwise it gets handled and put into the console.
     $response = $this->put(route($method, $plan));

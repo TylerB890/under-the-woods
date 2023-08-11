@@ -11,6 +11,8 @@ use App\StateMachines\Plan\RejectedPlanState;
 use App\StateMachines\Plan\SubmittedPlanState;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Plan extends Model
 {
@@ -62,4 +64,20 @@ class Plan extends Model
         'rejected_at' => 'datetime',
         'cancelled_at' => 'datetime',
     ];
+
+    /**
+     * Get the User that owns the Plan
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get all of the days for the Plan
+     */
+    public function days(): HasMany
+    {
+        return $this->hasMany(Day::class);
+    }
 }

@@ -23,7 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::put('/submit/{plan}', SubmitPlanController::class)->name('submit');
 Route::put('/cancel/{plan}', CancelPlanController::class)->name('cancel');
 Route::put('/recall/{plan}', RecallPlanController::class)->name('recall');

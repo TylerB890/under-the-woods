@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('status');
             $table->string('origin');
             $table->string('destination');
@@ -42,7 +42,7 @@ return new class extends Migration
 
         Schema::create('dinings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('day_id')->constrained();
+            $table->foreignId('day_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('location_id');
             $table->string('meal');
             $table->timestamp('start_time');
@@ -51,7 +51,7 @@ return new class extends Migration
 
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('day_id')->constrained();
+            $table->foreignId('day_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('location_id');
             $table->timestamp('start_time');
             $table->timestamp('end_time');
