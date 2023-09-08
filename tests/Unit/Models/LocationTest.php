@@ -6,11 +6,11 @@ use App\Models\Activity;
 use App\Models\Day;
 use App\Models\Dining;
 use App\Models\Location;
-use App\Models\Route;
 use App\Models\Plan;
+use App\Models\Route;
 use App\Models\User;
 
-it('Has many dinings', function() {
+it('Has many dinings', function () {
     $user = User::factory()->create();
     $plan = Plan::factory()->create(['user_id' => $user->id]);
     $location = Location::factory()->create();
@@ -19,11 +19,11 @@ it('Has many dinings', function() {
     $extraDining = Dining::factory()->create(['day_id' => $day->id, 'location_id' => $location->id]);
 
     expect($location->dinings()->count())->toBe(2);
-    expect($location->dinings->first())->toBeInstanceOf(Dining::class);
+    expect($location->dinings()->first())->toBeInstanceOf(Dining::class);
 
 });
 
-it('Has many starting_routes', function() {
+it('Has many starting_routes', function () {
     Location::factory()->count(10)->create();
     $user = User::factory()->create();
     $plan = Plan::factory()->submitted()->create(['user_id' => $user->id]);
@@ -34,11 +34,11 @@ it('Has many starting_routes', function() {
     Route::factory()->create(['day_id' => $extraDay->id, 'start_location_id' => $location->id]);
 
     expect($location->starting_route()->count())->toBe(2);
-    expect($location->starting_route->first())->toBeInstanceOf(Route::class);
+    expect($location->starting_route()->first())->toBeInstanceOf(Route::class);
 
 });
 
-it('Has many ending_routes', function() {
+it('Has many ending_routes', function () {
     Location::factory()->count(10)->create();
     $user = User::factory()->create();
     $plan = Plan::factory()->submitted()->create(['user_id' => $user->id]);
@@ -49,11 +49,11 @@ it('Has many ending_routes', function() {
     Route::factory()->create(['day_id' => $extraDay->id, 'end_location_id' => $location->id]);
 
     expect($location->ending_route()->count())->toBe(2);
-    expect($location->ending_route->first())->toBeInstanceOf(Route::class);
+    expect($location->ending_route()->first())->toBeInstanceOf(Route::class);
 
 });
 
-it('Has many activities', function() {
+it('Has many activities', function () {
     Location::factory()->count(10)->create();
     $user = User::factory()->create();
     $plan = Plan::factory()->submitted()->create(['user_id' => $user->id]);
@@ -64,6 +64,6 @@ it('Has many activities', function() {
     Activity::factory()->create(['day_id' => $extraDay->id, 'location_id' => $location->id]);
 
     expect($location->activities()->count())->toBe(2);
-    expect($location->activities->first())->toBeInstanceOf(Activity::class);
+    expect($location->activities()->first())->toBeInstanceOf(Activity::class);
 
 });

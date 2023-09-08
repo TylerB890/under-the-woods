@@ -55,7 +55,7 @@ class Activity extends Model
     /**
      * Get the Location that this activity belongs to
      */
-    public function end_location(): BelongsTo
+    public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class, 'location_id');
     }

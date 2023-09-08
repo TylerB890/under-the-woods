@@ -28,8 +28,6 @@ class Location extends Model
 
     /**
      * Get all of the dinings for the Location
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function dinings(): HasMany
     {
@@ -38,8 +36,6 @@ class Location extends Model
 
     /**
      * Get all of the routes that start at this Location
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function starting_route(): HasMany
     {
@@ -48,8 +44,6 @@ class Location extends Model
 
     /**
      * Get all of the routes which end at this Location
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function ending_route(): HasMany
     {
@@ -58,8 +52,6 @@ class Location extends Model
 
     /**
      * Get all of the activities at this Location
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function activities(): HasMany
     {
