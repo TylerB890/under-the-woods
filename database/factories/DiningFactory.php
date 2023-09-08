@@ -38,7 +38,6 @@ class DiningFactory extends Factory
         $end_time = $end_time->addMinutes(fake()->numberBetween(30, 240));
 
         return $this->state([
-            'meal' => fake()->randomElement(Meal::class),
             'start_time' => $start_time->format('Y-m-d h:i:s'),
             'end_time' => $end_time->format('Y-m-d h:i:s'),
         ]);

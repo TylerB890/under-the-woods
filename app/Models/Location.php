@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relation\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Location extends Model
 {
@@ -33,7 +33,7 @@ class Location extends Model
      */
     public function dinings(): HasMany
     {
-        return $this->hasMany(Dining::class, 'location_id');
+        return $this->hasMany(Dining::class);
     }
 
     /**

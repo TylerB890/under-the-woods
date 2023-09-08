@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Location;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class DayFactory extends Factory
      */
     public function definition(): array
     {
+        $day = Carbon::now();
+
         return [
+            'date' => $day->format('Y-m-d h:i:s'),
             'start_location_id' => Location::inRandomOrder()->first()->id,
             'end_location_id' => Location::inRandomOrder()->first()->id,
         ];
