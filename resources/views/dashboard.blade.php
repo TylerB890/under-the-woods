@@ -14,4 +14,10 @@
             </div>
         </div>
     </div>
+
+    <div>
+        <livewire:plan-entry />
+    </div>
+
+
 </x-app-layout>
